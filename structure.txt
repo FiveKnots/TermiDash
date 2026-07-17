@@ -1,0 +1,16 @@
+/TermiDash
+├── index.html
+├── css/
+│   └── styles.css
+└── js/
+    ├── main.js
+    ├── utils.js
+    ├── api.js
+    ├── charts.js
+    ├── components/
+    │   ├── Header.js
+    │   └── Navigation.js
+    └── views/
+        ├── DashboardView.js
+        ├── AnalysisView.js
+        └── KnowledgeView.js
