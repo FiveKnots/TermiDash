@@ -118,6 +118,7 @@ const initApp = async () => {
 
   // Initialize Knowledge Repository interactions
   initKnowledge();
+  initCommodity(appState);
 
   const loadingOverlay = document.getElementById('loading-overlay');
   if (loadingOverlay) loadingOverlay.classList.add('visible');
