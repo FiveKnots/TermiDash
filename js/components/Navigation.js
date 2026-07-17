@@ -11,6 +11,7 @@ export const Navigation = () => {
       <button class="tab-btn active" data-tab="dashboard">01 — Main Dashboard</button>
       <button class="tab-btn" data-tab="analysis">02 — Analysis</button>
       <button class="tab-btn" data-tab="knowledge">03 — Knowledge Repository</button>
+      <button class="tab-btn" data-tab="commodity">04 — Commodity Report</button>
     </nav>
   `;
 };
