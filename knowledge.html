@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Keuangan — Knowledge Repository</title>
+
+  <!-- SheetJS for Excel parsing -->
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+  <!-- Chart.js for visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo-mark">▪</div>
+      <div>
+        <h1 class="header-title">DASHBOARD TERMINAL</h1>
+        <p class="header-sub">KPU BEA CUKAI TIPE C SOEKARNO-HATTA</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="live-badge">● LIVE DATA</span>
+      <span id="last-updated" class="last-updated">—</span>
+    </div>
+  </header>
+
+  <!-- ===== DATA SOURCE BAR ===== -->
+  <div hidden class="data-bar">
+    <div class="data-bar-inner">
+      <div class="source-group">
+        <label class="source-label">UPLOAD FILE</label>
+        <label class="file-btn" for="file-input">
+          <span>↑ Excel / CSV</span>
+          <input type="file" id="file-input" accept=".xlsx,.xls,.csv" hidden />
+        </label>
+      </div>
+      <div class="divider-v"></div>
+      <div class="source-group">
+        <label class="source-label">GOOGLE SHEETS URL</label>
+        <div class="gsheet-row">
+          <input type="text" id="gsheet-url" class="gsheet-input" placeholder="Paste public Google Sheets URL..." />
+          <button class="gsheet-btn" id="load-gsheet-btn">Load</button>
+        </div>
+      </div>
+      <div class="divider-v"></div>
+      <div class="source-group">
+        <label class="source-label">EXPORT</label>
+        <button class="export-btn" id="export-btn">↓ Export Excel</button>
+      </div>
+    </div>
+    <div id="data-status" class="data-status"></div>
+  </div>
+
+  <!-- ===== TAB NAV ===== -->
+  <nav class="tab-nav">
+    <a class="tab-btn" href="index.html">01 — Main Dashboard</a>
+    <a class="tab-btn" href="analysis.html">02 — Analysis</a>
+    <a class="tab-btn active" href="knowledge.html">03 — Knowledge Repository</a>
+  </nav>
+
+  <!-- ===== KNOWLEDGE REPOSITORY ===== -->
+  <div id="tab-knowledge" class="tab-panel active">
+
+    <div class="section-box">
+      <div class="chart-header">
+        <span class="chart-title">MANAGE REPOSITORY FILES & LINKS</span>
+      </div>
+
+      <!-- Input Form -->
+      <div class="repo-form">
+        <div class="repo-input-group">
+          <label>JUDUL DOKUMEN</label>
+          <input type="text" id="repo-title" class="filter-input" placeholder="e.g., Aturan Klasifikasi Jastip..." style="width: 100%;" />
+        </div>
+        <div class="repo-input-group">
+          <label>KATEGORI</label>
+          <select id="repo-category" class="filter-input" style="width: 100%;">
+            <option value="SOP Internal">SOP Internal</option>
+            <option value="Legal / Peraturan">Legal / Peraturan</option>
+            <option value="Academic Research">Academic Research</option>
+            <option value="Lainnya">Lainnya</option>
+          </select>
+        </div>
+        <div class="repo-input-group">
+          <label>LINK / URL</label>
+          <input type="text" id="repo-url" class="filter-input" placeholder="https://..." style="width: 100%;" />
+        </div>
+        <button class="apply-btn" id="repo-save-btn" style="margin-top: 18px;">+ Add Document</button>
+      </div>
+    </div>
+
+    <!-- Data Table -->
+    <div class="section-box">
+      <div class="chart-header">
+        <span class="chart-title">DAFTAR REFERENSI</span>
+      </div>
+      <div class="table-scroll">
+        <table class="detail-table">
+          <thead>
+            <tr>
+              <th style="width: 50px;">No</th>
+              <th>Judul Dokumen</th>
+              <th>Kategori</th>
+              <th>Link Tautan</th>
+              <th style="text-align: center;">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="repo-tbody">
+            <!-- Rows will be populated by JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Loading overlay -->
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="loading-spinner">Loading data…</div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="js/repo.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
