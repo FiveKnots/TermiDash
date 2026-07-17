@@ -5,6 +5,7 @@ import { AnalysisView, initAnalysis } from './views/AnalysisView.js';
 import { KnowledgeView, initKnowledge } from './views/KnowledgeView.js';
 import { fetchGoogleSheetsData } from './api.js';
 import { parseRows, today } from './utils.js';
+import { CommodityView, initCommodity } from './views/CommodityView.js';
 
 // ============================================================
 // GLOBAL STATE
@@ -44,6 +45,7 @@ const renderApp = () => {
     ${DashboardView()}
     ${AnalysisView()}
     ${KnowledgeView()}
+    ${CommodityView()}
     
     <!-- Empty State -->
     <div id="empty-state" class="empty-state visible">
