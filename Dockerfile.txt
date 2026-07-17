@@ -1,0 +1,8 @@
+# Use a lightweight version of the Nginx web server
+FROM nginx:alpine
+
+# Copy your custom HTML file into the container's web directory
+COPY index.html /usr/share/nginx/html/index.html
+
+# Expose port 80 (the default port for web traffic)
+EXPOSE 80
